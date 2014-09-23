@@ -44,6 +44,7 @@ public class Abonne {
 	}
 	
 	public void info(){
+		System.out.println("----------ABONNE-------");
 		System.out.println("num abonne : " + numAbonne);
 		System.out.println("nom : " + nom);
 		System.out.println("emprunt : ");
@@ -52,7 +53,13 @@ public class Abonne {
 		}else{
 			System.out.println("pas d'emprunt");
 		}
+		System.out.println("-----------------------");
 		
+	}
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return super.equals(obj);
 	}
 	
 

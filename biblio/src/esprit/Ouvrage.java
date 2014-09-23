@@ -5,11 +5,19 @@ public class Ouvrage {
 	private String titre;
 	private String dateCreation;
 	private boolean existe;
+	private Type type;
 
 	public Ouvrage(String titre, String dateCreation) {
 		this.titre = titre;
 		this.dateCreation = dateCreation;
 		this.existe = true;
+	}
+	
+	public Ouvrage(String titre, String dateCreation, Type type) {
+		this.titre = titre;
+		this.dateCreation = dateCreation;
+		this.existe = true;
+		this.type = type;
 	}
 
 	public String getTitre() {
@@ -51,6 +59,14 @@ public class Ouvrage {
 	
 	public String toString(){
 		return "Ouvrage[titre="+titre+", dateCreation="+dateCreation+", existe="+existe+"]";
+	}
+
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
 	}
 
 }

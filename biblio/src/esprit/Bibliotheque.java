@@ -104,9 +104,64 @@ public class Bibliotheque {
 	}
 	
 	public void emprunter(String titre, int numAbonne){
+		Abonne abonne = rechercherAbonne(numAbonne);
+		Ouvrage ouvrage = rechercherOuvrage(titre);
+		if ((ouvrage != null)&&//ouvrage exite
+				(abonne != null)&&//abonne existe
+					(abonne.getEmprunt()== null)&&//l'abonne n'a pas d'emprunt en cours
+						(ouvrage.isExiste()== true)// l'ouvrage est disponible
+				) {
+			
+			abonne.setEmprunt(ouvrage);
+			ouvrage.setExiste(false);
+			
+		} else {
+			System.out.println("Emprunt impossible");
+		}
+	}
+	
+	public void rendre(int numAbonne){
+		Abonne abonne = rechercherAbonne(numAbonne);
+		
+		if (abonne != null) {
+			Ouvrage emprunt = abonne.getEmprunt();
+			if (emprunt != null) {
+				abonne.setEmprunt(null);
+				emprunt.setExiste(true);
+			} else {
+				System.out.println("L'abonne n'as pas d'emprunt");
+			}
+			
+		}else{
+			System.out.println("L'abonne n'existe pas");
+		}
+	}
+	
+	public void info(){
+		System.out.println("---------BIBLIOTHEQUE--------");
+		for (int i = 0; i < nbOuvrages; i++) {
+			if (ouvrages[i].getType().equals(Type.LIVRE)) {
+				ouvrages[i].info();
+			}
+		}
+		
+		for (int i = 0; i < nbAbonnes; i++) {
+			if (abonnes[i].getEmprunt() != null) {
+				abonnes[i].info();
+			}
+		}
+		System.out.println("-----------------------------");
+	}
+	
+	//homework
+	public  void supprimerOuvrage(String titre){
 		
 	}
 	
+	//homework
+	public  void supprimerAbonne(int numAbonne){
+		
+	}
 	
 	
 	
